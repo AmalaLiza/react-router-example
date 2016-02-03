@@ -9,6 +9,9 @@ import * as Immutable from "immutable";
 import {connect} from "react-redux";
 import Actions from "./actions.ts";
 import {bindActionCreators} from "redux";
+import SideItem from "./components/side-item/SideItem.tsx";
+import Content from "./components/content/content.tsx";
+import Tab from "./components/tab/tab.tsx";
 
 export class App extends React.Component<any, any> {
     constructor(props, context) {
@@ -16,7 +19,32 @@ export class App extends React.Component<any, any> {
     }
 
     render() {
-       return <h1>hey</h1>
+       return <div>
+            <div className="header-section">
+                <ul className="clearfix">
+                    <Tab/>
+                    <Tab/>
+                    <Tab/>
+                    <Tab/>
+                    <Tab/>
+                    <Tab/>
+                </ul>
+            </div>
+            <div className="clearfix content-wrapper">
+                <div className="left-section fleft">
+                    <ul>
+                        <SideItem/>
+                        <SideItem/>
+                        <SideItem/>
+                        <SideItem/>
+                    </ul>
+                </div>
+
+                <div className="content-section fright">
+                    <Content/>
+                </div>
+            </div>
+       </div>
     }
 }
 
