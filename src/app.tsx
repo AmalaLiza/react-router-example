@@ -7,9 +7,9 @@
 import * as React from "react";
 import * as Immutable from "immutable";
 import {connect} from "react-redux";
-import Actions from "./actions.ts";
+import * as Actions from "./actions.ts";
 import {bindActionCreators} from "redux";
-import SideItem from "./components/side-item/SideItem.tsx";
+import SidePanel from "./components/side-panel/SidePanel.tsx"
 import Content from "./components/content/content.tsx";
 import Tab from "./components/tab/tab.tsx";
 
@@ -19,7 +19,9 @@ export class App extends React.Component<any, any> {
     }
 
     render() {
-       return <div>
+        let {data, dispatch} = this.props;
+        let usersList = data.get('usersList')
+        return <div>
             <div className="header-section">
                 <ul className="clearfix">
                     <Tab/>
@@ -32,12 +34,7 @@ export class App extends React.Component<any, any> {
             </div>
             <div className="clearfix content-wrapper">
                 <div className="left-section fleft">
-                    <ul>
-                        <SideItem/>
-                        <SideItem/>
-                        <SideItem/>
-                        <SideItem/>
-                    </ul>
+                    <SidePanel usersList={usersList}/>
                 </div>
 
                 <div className="content-section fright">

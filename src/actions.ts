@@ -1,8 +1,23 @@
-export default {
-
-    click() {
+export function loadUsers() {
         return {
-            type: "CLICK"
+            type: "LOAD_USERS"
         };
-    }
 }
+/*
+export function click() {
+    return {
+        type: "CLICK"
+    };
+}
+
+export function click() {
+    return {
+        type: "CLICK"
+    };
+}
+
+export function click() {
+    return {
+        type: "CLICK"
+    };
+}*/
