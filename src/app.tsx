@@ -19,6 +19,7 @@ export class App extends React.Component<any, any> {
     }
 
     render() {
+
         let {data, dispatch} = this.props;
         let usersList = data.get('usersList')
         return <div>
@@ -36,25 +37,18 @@ export class App extends React.Component<any, any> {
                 <div className="left-section fleft">
                     <SidePanel usersList={usersList}/>
                 </div>
-
-                <div className="content-section fright">
-                    <Content/>
-                </div>
+                {data.get('contents').size ? <Content contents={data.get('contents')}/> : null}
             </div>
        </div>
     }
 }
 
 function mapStateToProps(state) {
-    return {
-        data: state
-    }
+    return { data: state }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(Actions, dispatch)
-    }
+    return { dispatch : dispatch }
 }
 
 export default connect(

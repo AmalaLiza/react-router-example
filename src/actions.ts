@@ -1,23 +1,38 @@
+import fetchJsonp from 'fetch-jsonp';
+
 export function loadUsers() {
-        return {
-            type: "LOAD_USERS"
-        };
-}
-/*
-export function click() {
-    return {
-        type: "CLICK"
+    return dispatch => {
+        return fetchJsonp('https://api.github.com/users')
+            .then(response => response.json())
+            .then(response => {
+                dispatch(loadUsersSuccess(response.data))
+            })
     };
 }
 
-export function click() {
-    return {
-        type: "CLICK"
+export function getUserDetails(userName) {
+    return dispatch => {
+        return fetchJsonp(`https://api.github.com/users/${userName}`)
+            .then(response => response.json())
+            .then(response => {
+                dispatch(loadUserDetailsSuccess(response.data))
+            })
+            .catch(err => {
+                throw err;
+            });
     };
 }
 
-export function click() {
+export function loadUsersSuccess(usersList) {
     return {
-        type: "CLICK"
+        type: "LOAD_USERSLIST_SUCCESS",
+        usersList
     };
-}*/
+}
+
+export function loadUserDetailsSuccess(user) {
+    return {
+        type: "LOAD_USER_SUCCESS",
+        user
+    };
+}

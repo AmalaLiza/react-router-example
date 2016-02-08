@@ -47,6 +47,7 @@
   "dependencies": {
     "file-loader": "^0.8.5",
     "lodash": "^4.0.0",
+    "react-router-redux": "^3.0.0",
     "react-timer-mixin": "^0.13.3",
     "redux-devtools": "^3.0.2",
     "redux-logger": "^2.3.2",

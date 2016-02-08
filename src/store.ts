@@ -10,7 +10,7 @@ import {rootReducer} from "./reducers/rootReducer.ts";
 
 const logger = createLogger();
 
-const createStoreWithMiddleware = compose(applyMiddleware(logger, thunkMiddleware))(createStore);
+const createStoreWithMiddleware = compose(applyMiddleware(thunkMiddleware, logger))(createStore);
 
 export function configureStore() {
     const store = createStoreWithMiddleware(rootReducer);
